@@ -1,17 +1,22 @@
 const std = @import("std");
 
 pub fn build(b: *std.Build) void {
-    const target = b.standardTargetOptions(.{});
+    const target = b.resolveTargetQuery(.{
+        .cpu_arch = .wasm32,
+        .os_tag = .freestanding,
+    });
+
     const optimize = b.standardOptimizeOption(.{});
+
     const mod = b.addModule("umbrella", .{
         .root_source_file = b.path("src/root.zig"),
         .target = target,
     });
 
     const exe = b.addExecutable(.{
-        .name = "umbrella",
+        .name = "lib",
         .root_module = b.createModule(.{
-            .root_source_file = b.path("src/main.zig"),
+            .root_source_file = b.path("src/root.zig"),
             .target = target,
             .optimize = optimize,
             .imports = &.{
@@ -19,6 +24,9 @@ pub fn build(b: *std.Build) void {
             },
         }),
     });
+
+    exe.entry = .disabled;
+    exe.out_filename = "../../web/lib.wasm";
 
     b.installArtifact(exe);
 
