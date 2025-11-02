@@ -27,6 +27,9 @@ pub fn build(b: *std.Build) void {
 
     lib.entry = .disabled;
     lib.out_filename = "../../web/lib.wasm";
+    lib.root_module.export_symbol_names = &[_][]const u8{
+        "start",
+    };
 
     b.installArtifact(lib);
 }
