@@ -13,7 +13,7 @@ pub fn build(b: *std.Build) void {
         .target = target,
     });
 
-    const lib = b.addExecutable(.{
+    const exe = b.addExecutable(.{
         .name = "lib",
         .root_module = b.createModule(.{
             .root_source_file = b.path("src/root.zig"),
@@ -25,11 +25,11 @@ pub fn build(b: *std.Build) void {
         }),
     });
 
-    lib.entry = .disabled;
-    lib.out_filename = "../../web/lib.wasm";
-    lib.root_module.export_symbol_names = &[_][]const u8{
+    exe.entry = .disabled;
+    exe.out_filename = "../../web/lib.wasm";
+    exe.root_module.export_symbol_names = &[_][]const u8{
         "start",
     };
 
-    b.installArtifact(lib);
+    b.installArtifact(exe);
 }
