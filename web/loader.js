@@ -11,7 +11,7 @@ async function init() {
     };
 
     const wasm = await WebAssembly.instantiateStreaming(fetch("lib.wasm"), imports);
-    console.log("start() =", wasm.instance.exports.start());
+    wasm.instance.exports.start();
 }
 
 init();

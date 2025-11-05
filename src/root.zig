@@ -1,6 +1,5 @@
-const console = @import("console.zig");
+const app = @import("app.zig");
 
-export fn start() i32 {
-    console.log("Hello World!");
-    return 42;
+export fn start() void {
+    app.start();
 }
