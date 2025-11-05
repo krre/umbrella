@@ -1,7 +1,6 @@
-extern fn console_log(message: [*]const u8, length: u8) void;
+const console = @import("console.zig");
 
 export fn start() i32 {
-    const log = "Hello World!";
-    console_log(log, log.len);
+    console.log("Hello World!");
     return 42;
 }
