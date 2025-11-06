@@ -1,6 +1,26 @@
 let wasm;
+let context;
 
 async function init() {
+    const adapter = await navigator.gpu?.requestAdapter();
+    const device = await adapter?.requestDevice();
+
+    if (!device) {
+        console.log('Browser does not supports WebGPU');
+        return;
+    }
+
+    const canvas = document.querySelector('canvas');
+    context = canvas.getContext('webgpu');
+    const presentationFormat = navigator.gpu.getPreferredCanvasFormat();
+
+    context.configure({
+        device,
+        format: presentationFormat,
+    });
+
+    console.log("context", context)
+
     const imports = {
         env: {
             console_log: (ptr, len) => {
