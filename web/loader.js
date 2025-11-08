@@ -26,6 +26,9 @@ async function init() {
             console_log: (ptr, len) => {
                 const bytes = new Uint8Array(wasm.instance.exports.memory.buffer, ptr, len);
                 console.log(new TextDecoder("utf8").decode(bytes));
+            },
+            gpu: () => {
+                return 42
             }
         }
     };
