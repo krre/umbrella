@@ -6,6 +6,7 @@ let objectIdCounter = 0;
 
 let gpuId = -1;
 let adapterId = -1;
+let deviceId = -1;
 
 function nextObjectId() {
     return ++objectIdCounter;
@@ -32,12 +33,15 @@ async function init() {
     adapterId = nextObjectId();
     objects[adapterId] = adapter;
 
-    const device = await adapter?.requestDevice();
+    const device = await adapter.requestDevice();
 
     if (!device) {
-        console.log('Browser does not supports WebGPU');
+        console.log('GPUDevice object not defined');
         return;
     }
+
+    deviceId = nextObjectId();
+    objects[deviceId] = device;
 
     const canvas = document.querySelector('canvas');
     context = canvas.getContext('webgpu');
@@ -61,6 +65,9 @@ async function init() {
             },
             adapter: () => {
                 return adapterId;
+            },
+            device: () => {
+                return deviceId;
             }
         }
     };
