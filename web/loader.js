@@ -1,5 +1,4 @@
 let wasm;
-let context;
 
 const objects = {};
 let objectIdCounter = 0;
@@ -7,6 +6,7 @@ let objectIdCounter = 0;
 let gpuId = -1;
 let adapterId = -1;
 let deviceId = -1;
+let canvasContextId = -1;
 
 function nextObjectId() {
     return ++objectIdCounter;
@@ -44,15 +44,28 @@ async function init() {
     objects[deviceId] = device;
 
     const canvas = document.querySelector('canvas');
-    context = canvas.getContext('webgpu');
+
+    if (!canvas) {
+        console.log('Canvas not found');
+        return;
+    }
+
+    const canvasContext = canvas.getContext('webgpu');
+
+    if (!canvasContext) {
+        console.log('GPUCanvasContext object not defined');
+        return;
+    }
+
+    canvasContextId = nextObjectId();
+    objects[canvasContextId] = canvasContext;
+
     const presentationFormat = navigator.gpu.getPreferredCanvasFormat();
 
-    context.configure({
+    canvasContext.configure({
         device,
         format: presentationFormat,
     });
-
-    console.log("context", context)
 
     const imports = {
         env: {
@@ -68,6 +81,9 @@ async function init() {
             },
             device: () => {
                 return deviceId;
+            },
+            canvas_context: () => {
+                return canvasContextId;
             }
         }
     };
