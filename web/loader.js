@@ -69,7 +69,7 @@ async function init() {
 
     const imports = {
         env: {
-            console_log: (ptr, len) => {
+            consoleLog: (ptr, len) => {
                 const bytes = new Uint8Array(wasm.instance.exports.memory.buffer, ptr, len);
                 console.log(new TextDecoder("utf8").decode(bytes));
             },
@@ -82,7 +82,7 @@ async function init() {
             device: () => {
                 return deviceId;
             },
-            canvas_context: () => {
+            canvasContext: () => {
                 return canvasContextId;
             }
         }
