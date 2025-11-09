@@ -1,7 +1,26 @@
 let wasm;
 let context;
 
+const objects = {};
+let objectIdCounter = 0;
+
+let gpuId = -1;
+
+function nextObjectId() {
+    return ++objectIdCounter;
+}
+
 async function init() {
+    const gpu = navigator.gpu;
+
+    if (!gpu) {
+        console.log('GPU object not defined');
+        return;
+    }
+
+    gpuId = nextObjectId();
+    objects[gpuId] = gpu;
+
     const adapter = await navigator.gpu?.requestAdapter();
     const device = await adapter?.requestDevice();
 
@@ -28,7 +47,7 @@ async function init() {
                 console.log(new TextDecoder("utf8").decode(bytes));
             },
             gpu: () => {
-                return 42
+                return gpuId;
             }
         }
     };
