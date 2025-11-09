@@ -5,6 +5,7 @@ const objects = {};
 let objectIdCounter = 0;
 
 let gpuId = -1;
+let adapterId = -1;
 
 function nextObjectId() {
     return ++objectIdCounter;
@@ -21,7 +22,16 @@ async function init() {
     gpuId = nextObjectId();
     objects[gpuId] = gpu;
 
-    const adapter = await navigator.gpu?.requestAdapter();
+    const adapter = await gpu.requestAdapter();
+
+    if (!adapter) {
+        console.log('GPUAdapter object not defined');
+        return;
+    }
+
+    adapterId = nextObjectId();
+    objects[adapterId] = adapter;
+
     const device = await adapter?.requestDevice();
 
     if (!device) {
@@ -48,6 +58,9 @@ async function init() {
             },
             gpu: () => {
                 return gpuId;
+            },
+            adapter: () => {
+                return adapterId;
             }
         }
     };
