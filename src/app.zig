@@ -3,7 +3,8 @@ const Allocator = std.mem.Allocator;
 const console = @import("console.zig");
 const renderer = @import("renderer.zig");
 
+var webgpu_renderer: *renderer.Renderer = undefined;
+
 pub fn start(allocator: Allocator) !void {
-    const webgpu_renderer = try renderer.Renderer.init(allocator);
-    _ = webgpu_renderer;
+    webgpu_renderer = try renderer.Renderer.init(allocator);
 }
