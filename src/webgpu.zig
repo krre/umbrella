@@ -4,3 +4,5 @@ pub const GpuCanvasContext = @import("webgpu/GpuCanvasContext.zig").GpuCanvasCon
 pub const GpuDevice = @import("webgpu/GpuDevice.zig").GpuDevice;
 pub const GpuTexture = @import("webgpu/GpuTexture.zig").GpuTexture;
 pub const GpuTextureView = @import("webgpu/GpuTextureView.zig").GpuTextureView;
+
+pub extern fn destroy(id: usize) void;

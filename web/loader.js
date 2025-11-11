@@ -73,6 +73,10 @@ async function init() {
                 const bytes = new Uint8Array(wasm.instance.exports.memory.buffer, ptr, len);
                 console.log(new TextDecoder("utf8").decode(bytes));
             },
+            destroy: (id) => {
+                objects[id].destroy()
+                delete objects[id]
+            },
             gpu: () => {
                 return gpuId;
             },
@@ -91,10 +95,6 @@ async function init() {
                 const textureId = nextObjectId();
                 objects[textureId] = texture;
                 return textureId;
-            },
-            destroyTexture: (id) => {
-                objects[id].destroy()
-                delete objects[id]
             },
             textureCreateView: (id) => {
                 const texture = objects[id];
