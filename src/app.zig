@@ -7,4 +7,5 @@ var webgpu_renderer: renderer.Renderer = undefined;
 pub fn start(allocator: Allocator) !void {
     _ = allocator;
     webgpu_renderer = renderer.Renderer.init();
+    webgpu_renderer.clear();
 }

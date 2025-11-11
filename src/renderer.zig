@@ -17,4 +17,9 @@ pub const Renderer = struct {
             .canvas_context = canvas_context.GpuCanvasContext.init(),
         };
     }
+
+    pub fn clear(self: *Renderer) void {
+        const texture = self.canvas_context.getCurrentTexture();
+        defer texture.deinit();
+    }
 };
