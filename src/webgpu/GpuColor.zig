@@ -1,9 +1,10 @@
 const webgpu = @import("../webgpu.zig");
+const Id = webgpu.Id;
 
-extern fn color(r: f32, g: f32, b: f32, a: f32) usize;
+extern fn color(r: f32, g: f32, b: f32, a: f32) Id;
 
 pub const GpuColor = struct {
-    id: usize,
+    id: Id,
     r: f32,
     g: f32,
     b: f32,

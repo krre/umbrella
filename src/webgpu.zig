@@ -6,6 +6,7 @@ pub const GpuDevice = @import("webgpu/GpuDevice.zig").GpuDevice;
 pub const GpuRenderPassColorAttachment = @import("webgpu/GpuRenderPassColorAttachment.zig").GpuRenderPassColorAttachment;
 pub const GpuTexture = @import("webgpu/GpuTexture.zig").GpuTexture;
 pub const GpuTextureView = @import("webgpu/GpuTextureView.zig").GpuTextureView;
+pub const Id = @import("types.zig").Id;
 
 pub const GpuLoadOp = enum {
     load,
@@ -17,5 +18,5 @@ pub const GpuStoreOp = enum {
     discard,
 };
 
-pub extern fn destroy(id: usize) void;
-pub extern fn remove(id: usize) void;
+pub extern fn destroy(id: Id) void;
+pub extern fn remove(id: Id) void;

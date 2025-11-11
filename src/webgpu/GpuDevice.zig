@@ -1,7 +1,9 @@
-extern fn device() usize;
+const Id = @import("../types.zig").Id;
+
+extern fn device() Id;
 
 pub const GpuDevice = struct {
-    id: usize,
+    id: Id,
 
     pub fn init() GpuDevice {
         return GpuDevice{

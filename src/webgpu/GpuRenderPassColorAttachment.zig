@@ -1,20 +1,21 @@
 const webgpu = @import("../webgpu.zig");
+const Id = webgpu.Id;
 const GpuColor = webgpu.GpuColor;
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
 const GpuTextureView = @import("GpuTextureView.zig").GpuTextureView;
 
-extern fn renderPassColorAttachment(view: usize, load_op: u8, store_op: u8, color_value: usize) usize;
+extern fn renderPassColorAttachment(view: Id, load_op: u8, store_op: u8, color_value: Id) Id;
 
 pub const GpuRenderPassColorAttachment = struct {
-    id: usize,
+    id: Id,
     view: GpuTextureView,
     load_op: GpuLoadOp,
     store_op: GpuStoreOp,
     clear_value: ?GpuColor,
 
     pub fn init(view: GpuTextureView, load_op: GpuLoadOp, store_op: GpuStoreOp, clear_value: ?GpuColor) GpuRenderPassColorAttachment {
-        var color_id: usize = 0;
+        var color_id: Id = 0;
 
         if (clear_value) |value| {
             color_id = value.id;
