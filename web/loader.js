@@ -8,6 +8,9 @@ let adapterId = -1;
 let deviceId = -1;
 let canvasContextId = -1;
 
+const loadOps = ["load", "clear"];
+const storeOps = ["store", "discard"];
+
 function nextObjectId() {
     return ++objectIdCounter;
 }
@@ -106,6 +109,17 @@ async function init() {
                 objects[textureViewId] = textureView;
                 return textureViewId;
             },
+            renderPassColorAttachment: (textureViewId, loadOp, storeOp) => {
+                const textureView = objects[textureViewId];
+                const colorAttachment = {
+                    view: textureView,
+                    loadOp: loadOps[loadOp],
+                    storeOp: storeOps[storeOp]
+                };
+                const colorAttachmentId = nextObjectId();
+                objects[colorAttachmentId] = colorAttachment;
+                return colorAttachmentId;
+            }
         }
     };
 
