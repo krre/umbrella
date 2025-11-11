@@ -5,7 +5,6 @@ const GpuColor = webgpu.GpuColor;
 const GpuDevice = webgpu.GpuDevice;
 const GpuRenderPassColorAttachment = webgpu.GpuRenderPassColorAttachment;
 const GpuCanvasContext = webgpu.GpuCanvasContext;
-
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
 
