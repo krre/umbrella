@@ -1,4 +1,4 @@
-const GpuTexture = @import("texture.zig").GpuTexture;
+const GpuTexture = @import("GpuTexture.zig").GpuTexture;
 
 extern fn canvasContext() usize;
 extern fn canvasContextGetCurrentTexture(id: usize) usize;

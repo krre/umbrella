@@ -1,20 +1,21 @@
-const gpu = @import("webgpu/gpu.zig");
-const adapter = @import("webgpu/adapter.zig");
-const device = @import("webgpu/device.zig");
-const canvas_context = @import("webgpu/canvas_context.zig");
+const webgpu = @import("webgpu.zig");
+const Gpu = webgpu.Gpu;
+const GpuAdapter = webgpu.GpuAdapter;
+const GpuDevice = webgpu.GpuDevice;
+const GpuCanvasContext = webgpu.GpuCanvasContext;
 
 pub const Renderer = struct {
-    gpu: gpu.Gpu,
-    adapter: adapter.GpuAdapter,
-    device: device.GpuDevice,
-    canvas_context: canvas_context.GpuCanvasContext,
+    gpu: Gpu,
+    adapter: GpuAdapter,
+    device: GpuDevice,
+    canvas_context: GpuCanvasContext,
 
     pub fn init() Renderer {
         return Renderer{
-            .gpu = gpu.Gpu.init(),
-            .adapter = adapter.GpuAdapter.init(),
-            .device = device.GpuDevice.init(),
-            .canvas_context = canvas_context.GpuCanvasContext.init(),
+            .gpu = Gpu.init(),
+            .adapter = GpuAdapter.init(),
+            .device = GpuDevice.init(),
+            .canvas_context = GpuCanvasContext.init(),
         };
     }
 
