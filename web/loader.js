@@ -95,7 +95,14 @@ async function init() {
             destroyTexture: (id) => {
                 objects[id].destroy()
                 delete objects[id]
-            }
+            },
+            textureCreateView: (id) => {
+                const texture = objects[id];
+                const textureView = texture.createView();
+                const textureViewId = nextObjectId();
+                objects[textureViewId] = textureView;
+                return textureViewId;
+            },
         }
     };
 

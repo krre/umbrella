@@ -22,5 +22,8 @@ pub const Renderer = struct {
     pub fn clear(self: *Renderer) void {
         const texture = self.canvas_context.getCurrentTexture();
         defer texture.deinit();
+
+        const texture_view = texture.createView();
+        _ = texture_view;
     }
 };
