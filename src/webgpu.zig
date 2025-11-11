@@ -6,3 +6,4 @@ pub const GpuTexture = @import("webgpu/GpuTexture.zig").GpuTexture;
 pub const GpuTextureView = @import("webgpu/GpuTextureView.zig").GpuTextureView;
 
 pub extern fn destroy(id: usize) void;
+pub extern fn remove(id: usize) void;

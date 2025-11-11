@@ -77,6 +77,9 @@ async function init() {
                 objects[id].destroy()
                 delete objects[id]
             },
+            remove: (id) => {
+                delete objects[id]
+            },
             gpu: () => {
                 return gpuId;
             },

@@ -24,6 +24,6 @@ pub const Renderer = struct {
         defer texture.deinit();
 
         const texture_view = texture.createView();
-        _ = texture_view;
+        defer texture_view.deinit();
     }
 };

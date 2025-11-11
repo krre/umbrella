@@ -1,3 +1,5 @@
+const webgpu = @import("../webgpu.zig");
+
 pub const GpuTextureView = struct {
     id: usize,
 
@@ -5,5 +7,9 @@ pub const GpuTextureView = struct {
         return GpuTextureView{
             .id = id,
         };
+    }
+
+    pub fn deinit(self: GpuTextureView) void {
+        webgpu.remove(self.id);
     }
 };
