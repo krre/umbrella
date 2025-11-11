@@ -15,6 +15,12 @@ function nextObjectId() {
     return ++objectIdCounter;
 }
 
+function saveObject(object) {
+    const id = nextObjectId();
+    objects[id] = object;
+    return id;
+}
+
 async function init() {
     const gpu = navigator.gpu;
 
@@ -23,8 +29,7 @@ async function init() {
         return;
     }
 
-    gpuId = nextObjectId();
-    objects[gpuId] = gpu;
+    gpuId = saveObject(gpu);
 
     const adapter = await gpu.requestAdapter();
 
@@ -33,8 +38,7 @@ async function init() {
         return;
     }
 
-    adapterId = nextObjectId();
-    objects[adapterId] = adapter;
+    adapterId = saveObject(adapter);
 
     const device = await adapter.requestDevice();
 
@@ -43,8 +47,7 @@ async function init() {
         return;
     }
 
-    deviceId = nextObjectId();
-    objects[deviceId] = device;
+    deviceId = saveObject(device);
 
     const canvas = document.querySelector('canvas');
 
@@ -60,8 +63,7 @@ async function init() {
         return;
     }
 
-    canvasContextId = nextObjectId();
-    objects[canvasContextId] = canvasContext;
+    canvasContextId = saveObject(canvasContext);
 
     const presentationFormat = navigator.gpu.getPreferredCanvasFormat();
 
@@ -98,16 +100,12 @@ async function init() {
             canvasContextGetCurrentTexture: (canvasContextId) => {
                 const canvasContext = objects[canvasContextId];
                 const texture = canvasContext.getCurrentTexture();
-                const textureId = nextObjectId();
-                objects[textureId] = texture;
-                return textureId;
+                return saveObject(texture);
             },
             textureCreateView: (textureId) => {
                 const texture = objects[textureId];
                 const textureView = texture.createView();
-                const textureViewId = nextObjectId();
-                objects[textureViewId] = textureView;
-                return textureViewId;
+                return saveObject(textureView);
             },
             renderPassColorAttachment: (textureViewId, loadOp, storeOp) => {
                 const textureView = objects[textureViewId];
@@ -116,9 +114,7 @@ async function init() {
                     loadOp: loadOps[loadOp],
                     storeOp: storeOps[storeOp]
                 };
-                const colorAttachmentId = nextObjectId();
-                objects[colorAttachmentId] = colorAttachment;
-                return colorAttachmentId;
+                return saveObject(colorAttachment);
             },
             color: (r, g, b, a) => {
                 const color = {
@@ -127,9 +123,7 @@ async function init() {
                     b: b,
                     a: a
                 };
-                const colorId = nextObjectId();
-                objects[colorId] = color;
-                return colorId;
+                return saveObject(color);
             }
         }
     };
