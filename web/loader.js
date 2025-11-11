@@ -95,15 +95,15 @@ async function init() {
             canvasContext: () => {
                 return canvasContextId;
             },
-            canvasContextGetCurrentTexture: (id) => {
-                const canvasContext = objects[id];
+            canvasContextGetCurrentTexture: (canvasContextId) => {
+                const canvasContext = objects[canvasContextId];
                 const texture = canvasContext.getCurrentTexture();
                 const textureId = nextObjectId();
                 objects[textureId] = texture;
                 return textureId;
             },
-            textureCreateView: (id) => {
-                const texture = objects[id];
+            textureCreateView: (textureId) => {
+                const texture = objects[textureId];
                 const textureView = texture.createView();
                 const textureViewId = nextObjectId();
                 objects[textureViewId] = textureView;
