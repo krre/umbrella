@@ -31,10 +31,9 @@ pub const Renderer = struct {
         const texture_view = texture.createView();
         defer texture_view.deinit();
 
-        const color_attachment = GpuRenderPassColorAttachment.init(texture_view, GpuLoadOp.clear, GpuStoreOp.store);
-        defer color_attachment.deinit();
-
         const color = GpuColor.init(1.0, 0.0, 0.0, 1.0);
-        defer color.deinit();
+
+        const color_attachment = GpuRenderPassColorAttachment.init(texture_view, GpuLoadOp.clear, GpuStoreOp.store, color);
+        defer color_attachment.deinit();
     }
 };

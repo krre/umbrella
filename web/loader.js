@@ -107,12 +107,13 @@ async function init() {
                 const textureView = texture.createView();
                 return saveObject(textureView);
             },
-            renderPassColorAttachment: (textureViewId, loadOp, storeOp) => {
+            renderPassColorAttachment: (textureViewId, loadOp, storeOp, colorId) => {
                 const textureView = objects[textureViewId];
                 const colorAttachment = {
                     view: textureView,
                     loadOp: loadOps[loadOp],
-                    storeOp: storeOps[storeOp]
+                    storeOp: storeOps[storeOp],
+                    clearValue: objects[colorId]
                 };
                 return saveObject(colorAttachment);
             },
