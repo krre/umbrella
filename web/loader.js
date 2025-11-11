@@ -119,6 +119,17 @@ async function init() {
                 const colorAttachmentId = nextObjectId();
                 objects[colorAttachmentId] = colorAttachment;
                 return colorAttachmentId;
+            },
+            color: (r, g, b, a) => {
+                const color = {
+                    r: r,
+                    g: g,
+                    b: b,
+                    a: a
+                };
+                const colorId = nextObjectId();
+                objects[colorId] = color;
+                return colorId;
             }
         }
     };
