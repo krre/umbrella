@@ -84,6 +84,16 @@ async function init() {
             },
             canvasContext: () => {
                 return canvasContextId;
+            },
+            canvasContextGetCurrentTexture: (id) => {
+                const canvasContext = objects[id];
+                const texture = canvasContext.getCurrentTexture();
+                const textureId = nextObjectId();
+                objects[textureId] = texture;
+                return textureId;
+            },
+            destroyTexture: (id) => {
+                delete objects[id]
             }
         }
     };

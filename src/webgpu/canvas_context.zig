@@ -1,4 +1,7 @@
+const GpuTexture = @import("texture.zig").GpuTexture;
+
 extern fn canvasContext() usize;
+extern fn canvasContextGetCurrentTexture(id: usize) usize;
 
 pub const GpuCanvasContext = struct {
     id: usize,
@@ -7,5 +10,9 @@ pub const GpuCanvasContext = struct {
         return GpuCanvasContext{
             .id = canvasContext(),
         };
+    }
+
+    pub fn getCurrentTexture(self: GpuCanvasContext) GpuTexture {
+        return GpuTexture.init(canvasContextGetCurrentTexture(self.id));
     }
 };
