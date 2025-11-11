@@ -93,6 +93,7 @@ async function init() {
                 return textureId;
             },
             destroyTexture: (id) => {
+                objects[id].destroy()
                 delete objects[id]
             }
         }
