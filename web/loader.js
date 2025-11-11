@@ -25,7 +25,7 @@ async function init() {
     const gpu = navigator.gpu;
 
     if (!gpu) {
-        console.log('GPU object not defined');
+        console.error('User agent doesn’t support WebGPU');
         return;
     }
 
@@ -34,32 +34,26 @@ async function init() {
     const adapter = await gpu.requestAdapter();
 
     if (!adapter) {
-        console.log('GPUAdapter object not defined');
+        console.error('No WebGPU adapters found');
         return;
     }
 
     adapterId = saveObject(adapter);
 
     const device = await adapter.requestDevice();
-
-    if (!device) {
-        console.log('GPUDevice object not defined');
-        return;
-    }
-
     deviceId = saveObject(device);
 
     const canvas = document.querySelector('canvas');
 
     if (!canvas) {
-        console.log('Canvas not found');
+        console.error('Canvas not found');
         return;
     }
 
     const canvasContext = canvas.getContext('webgpu');
 
     if (!canvasContext) {
-        console.log('GPUCanvasContext object not defined');
+        console.error('GPUCanvasContext object not defined');
         return;
     }
 
