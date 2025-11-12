@@ -55,5 +55,8 @@ pub const Renderer = struct {
 
         const queue = self.device.queue();
         defer queue.deinit();
+
+        queue.addCommandBuffer(command_buffer);
+        queue.submit();
     }
 };

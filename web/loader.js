@@ -154,7 +154,17 @@ async function init() {
             deviceQueue: (deviceId) => {
                 const device = objects[deviceId];
                 const queue = device.queue;
+                queue.commandBuffers = [];
                 return saveObject(queue);
+            },
+            queueAddCommandBuffer: (queueId, bufferId) => {
+                const queue = objects[queueId];
+                const commandBuffer = objects[bufferId];
+                queue.commandBuffers.push(commandBuffer);
+            },
+            queueSubmit: (queueId) => {
+                const queue = objects[queueId];
+                queue.submit(queue.commandBuffers);
             }
         }
     };
