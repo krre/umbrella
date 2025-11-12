@@ -4,8 +4,8 @@ const GpuQueue = webgpu.GpuQueue;
 const Id = webgpu.Id;
 
 extern fn device() Id;
-extern fn deviceCreateCommandEncoder(deviceId: Id) Id;
-extern fn deviceQueue(deviceId: Id) Id;
+extern fn deviceCreateCommandEncoder(id: Id) Id;
+extern fn deviceQueue(id: Id) Id;
 
 pub const GpuDevice = struct {
     id: Id,
