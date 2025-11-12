@@ -150,6 +150,11 @@ async function init() {
                 const commandEncoder = objects[commandEncoderId];
                 const commandBuffer = commandEncoder.finish();
                 return saveObject(commandBuffer);
+            },
+            deviceQueue: (deviceId) => {
+                const device = objects[deviceId];
+                const queue = device.queue;
+                return saveObject(queue);
             }
         }
     };
