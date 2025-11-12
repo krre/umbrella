@@ -176,6 +176,10 @@ async function init() {
         exports.resize(window.innerWidth, window.innerHeight);
     });
 
+    window.addEventListener('mousemove', function (event) {
+        exports.mouseMove(event.clientX, event.clientY)
+    });
+
     exports.start();
 }
 

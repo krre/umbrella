@@ -9,6 +9,11 @@ export fn resize(width: usize, height: usize) void {
     console.fmtLog("resize {d}, {d}", .{ width, height }) catch {};
 }
 
+export fn mouseMove(x: i32, y: i32) void {
+    _ = x;
+    _ = y;
+}
+
 pub fn start(allocator: Allocator) !void {
     _ = allocator;
     renderer = Renderer.init();
