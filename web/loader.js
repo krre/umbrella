@@ -119,6 +119,12 @@ async function init() {
                     a: a
                 };
                 return saveObject(color);
+            },
+            renderPassDescriptor: () => {
+                const descriptor = {
+                    colorAttachments: []
+                };
+                return saveObject(descriptor);
             }
         }
     };

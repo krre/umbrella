@@ -4,6 +4,7 @@ const GpuAdapter = webgpu.GpuAdapter;
 const GpuColor = webgpu.GpuColor;
 const GpuDevice = webgpu.GpuDevice;
 const GpuRenderPassColorAttachment = webgpu.GpuRenderPassColorAttachment;
+const GpuRenderPassDescriptor = webgpu.GpuRenderPassDescriptor;
 const GpuCanvasContext = webgpu.GpuCanvasContext;
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
@@ -34,5 +35,8 @@ pub const Renderer = struct {
 
         const color_attachment = GpuRenderPassColorAttachment.init(texture_view, GpuLoadOp.clear, GpuStoreOp.store, color);
         defer color_attachment.deinit();
+
+        const render_pass_descriptor = GpuRenderPassDescriptor.init();
+        defer render_pass_descriptor.deinit();
     }
 };
