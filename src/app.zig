@@ -1,11 +1,11 @@
 const std = @import("std");
 const Allocator = std.mem.Allocator;
-const renderer = @import("renderer.zig");
+const Renderer = @import("Renderer.zig").Renderer;
 
-var webgpu_renderer: renderer.Renderer = undefined;
+var renderer: Renderer = undefined;
 
 pub fn start(allocator: Allocator) !void {
     _ = allocator;
-    webgpu_renderer = renderer.Renderer.init();
-    webgpu_renderer.clear();
+    renderer = Renderer.init();
+    renderer.clear();
 }
