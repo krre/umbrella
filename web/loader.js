@@ -135,6 +135,12 @@ async function init() {
                 const device = objects[deviceId];
                 const encoder = device.createCommandEncoder();
                 return saveObject(encoder);
+            },
+            commandEncoderBeginRenderPass: (commandEncoderId, descriptorId) => {
+                const commandEncoder = objects[commandEncoderId];
+                const descriptor = objects[descriptorId];
+                const renderPassEncoder = commandEncoder.beginRenderPass(descriptor);
+                return saveObject(renderPassEncoder);
             }
         }
     };

@@ -5,6 +5,7 @@ pub const GpuColor = @import("webgpu/GpuColor.zig").GpuColor;
 pub const GpuCommandEncoder = @import("webgpu/GpuCommandEncoder.zig").GpuCommandEncoder;
 pub const GpuDevice = @import("webgpu/GpuDevice.zig").GpuDevice;
 pub const GpuRenderPassColorAttachment = @import("webgpu/GpuRenderPassColorAttachment.zig").GpuRenderPassColorAttachment;
+pub const GpuRenderPassEncoder = @import("webgpu/GpuRenderPassEncoder.zig").GpuRenderPassEncoder;
 pub const GpuRenderPassDescriptor = @import("webgpu/GpuRenderPassDescriptor.zig").GpuRenderPassDescriptor;
 pub const GpuTexture = @import("webgpu/GpuTexture.zig").GpuTexture;
 pub const GpuTextureView = @import("webgpu/GpuTextureView.zig").GpuTextureView;

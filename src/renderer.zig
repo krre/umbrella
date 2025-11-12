@@ -44,5 +44,8 @@ pub const Renderer = struct {
 
         const command_encoder = self.device.createCommandEncoder();
         defer command_encoder.deinit();
+
+        const render_pass = command_encoder.beginRenderPass(render_pass_descriptor);
+        defer render_pass.deinit();
     }
 };
