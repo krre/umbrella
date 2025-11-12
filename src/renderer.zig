@@ -2,6 +2,7 @@ const webgpu = @import("webgpu.zig");
 const Gpu = webgpu.Gpu;
 const GpuAdapter = webgpu.GpuAdapter;
 const GpuColor = webgpu.GpuColor;
+const GpuCommandEncoder = webgpu.GpuCommandEncoder;
 const GpuDevice = webgpu.GpuDevice;
 const GpuRenderPassColorAttachment = webgpu.GpuRenderPassColorAttachment;
 const GpuRenderPassDescriptor = webgpu.GpuRenderPassDescriptor;
@@ -40,5 +41,8 @@ pub const Renderer = struct {
         defer render_pass_descriptor.deinit();
 
         render_pass_descriptor.addColorAttachment(color_attachment);
+
+        const command_encoder = self.device.createCommandEncoder();
+        defer command_encoder.deinit();
     }
 };

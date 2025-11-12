@@ -130,6 +130,11 @@ async function init() {
                 const renderPassDescriptor = objects[descriptorId];
                 const renderPassColorAttachment = objects[attachmentId];
                 renderPassDescriptor.colorAttachments.push(renderPassColorAttachment);
+            },
+            deviceCreateCommandEncoder: (deviceId) => {
+                const device = objects[deviceId];
+                const encoder = device.createCommandEncoder();
+                return saveObject(encoder);
             }
         }
     };
