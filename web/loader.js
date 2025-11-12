@@ -145,6 +145,11 @@ async function init() {
             renderPassEnd: (renderPassId) => {
                 const renderPass = objects[renderPassId];
                 renderPass.end();
+            },
+            commandEncoderFinish: (commandEncoderId) => {
+                const commandEncoder = objects[commandEncoderId];
+                const commandBuffer = commandEncoder.finish();
+                return saveObject(commandBuffer);
             }
         }
     };

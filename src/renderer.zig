@@ -49,5 +49,8 @@ pub const Renderer = struct {
         defer render_pass.deinit();
 
         render_pass.end();
+
+        const command_buffer = command_encoder.finish();
+        defer command_buffer.deinit();
     }
 };
