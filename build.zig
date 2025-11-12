@@ -27,9 +27,7 @@ pub fn build(b: *std.Build) void {
 
     exe.entry = .disabled;
     exe.out_filename = "../../web/lib.wasm";
-    exe.root_module.export_symbol_names = &[_][]const u8{
-        "start",
-    };
+    exe.root_module.export_symbol_names = &[_][]const u8{ "start", "resize" };
 
     b.installArtifact(exe);
 }

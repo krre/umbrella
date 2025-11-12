@@ -170,7 +170,13 @@ async function init() {
     };
 
     const wasm = await WebAssembly.instantiateStreaming(fetch("lib.wasm"), imports);
-    wasm.instance.exports.start();
+    const exports = wasm.instance.exports;
+
+    window.addEventListener('resize', function () {
+        exports.resize(window.innerWidth, window.innerHeight);
+    });
+
+    exports.start();
 }
 
 init();
