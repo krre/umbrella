@@ -38,5 +38,7 @@ pub const Renderer = struct {
 
         const render_pass_descriptor = GpuRenderPassDescriptor.init();
         defer render_pass_descriptor.deinit();
+
+        render_pass_descriptor.addColorAttachment(color_attachment);
     }
 };

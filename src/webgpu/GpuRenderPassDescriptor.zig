@@ -5,6 +5,7 @@ const Id = webgpu.Id;
 const max_attachments = 8;
 
 extern fn renderPassDescriptor() Id;
+extern fn addRenderPassColorAttachment(descriptor_id: Id, attachment_id: Id) void;
 
 pub const GpuRenderPassDescriptor = struct {
     id: Id,
@@ -17,5 +18,9 @@ pub const GpuRenderPassDescriptor = struct {
 
     pub fn deinit(self: GpuRenderPassDescriptor) void {
         webgpu.remove(self.id);
+    }
+
+    pub fn addColorAttachment(self: GpuRenderPassDescriptor, attachment: GpuRenderPassColorAttachment) void {
+        addRenderPassColorAttachment(self.id, attachment.id);
     }
 };

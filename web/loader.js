@@ -125,6 +125,11 @@ async function init() {
                     colorAttachments: []
                 };
                 return saveObject(descriptor);
+            },
+            addRenderPassColorAttachment: (descriptorId, attachmentId) => {
+                const renderPassDescriptor = objects[descriptorId];
+                const renderPassColorAttachment = objects[attachmentId];
+                renderPassDescriptor.colorAttachments.push(renderPassColorAttachment);
             }
         }
     };
