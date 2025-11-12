@@ -141,6 +141,10 @@ async function init() {
                 const descriptor = objects[descriptorId];
                 const renderPassEncoder = commandEncoder.beginRenderPass(descriptor);
                 return saveObject(renderPassEncoder);
+            },
+            renderPassEnd: (renderPassId) => {
+                const renderPass = objects[renderPassId];
+                renderPass.end();
             }
         }
     };

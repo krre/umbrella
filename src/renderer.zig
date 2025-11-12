@@ -47,5 +47,7 @@ pub const Renderer = struct {
 
         const render_pass = command_encoder.beginRenderPass(render_pass_descriptor);
         defer render_pass.deinit();
+
+        render_pass.end();
     }
 };
