@@ -1,20 +1,20 @@
 const std = @import("std");
 const console = @import("console.zig");
 const event = @import("event.zig");
-const Application = @import("Application.zig").Application;
+const Ui3d = @import("ui/Ui3d.zig").Ui3d;
 
-pub var app: Application = undefined;
+pub var ui: Ui3d = undefined;
 
 export fn start() void {
-    console.log("Application initing begin");
+    console.log("UI initing begin");
 
     const allocator = std.heap.wasm_allocator;
-    app = Application.init(allocator);
-    event.app = &app;
+    ui = Ui3d.init(allocator);
+    event.ui = &ui;
 
-    if (app.start()) |_| {
-        console.log("Application started");
+    if (ui.start()) |_| {
+        console.log("UI started");
     } else |_| {
-        console.log("Application start failure");
+        console.log("UI start failure");
     }
 }
