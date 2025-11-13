@@ -1,4 +1,5 @@
-const Id = @import("../types.zig").Id;
+const webgpu = @import("../webgpu.zig");
+const Id = webgpu.Id;
 
 extern fn adapter() Id;
 
