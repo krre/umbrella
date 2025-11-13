@@ -1,5 +1,6 @@
 const std = @import("std");
 const console = @import("console.zig");
+const event = @import("event.zig");
 const Application = @import("Application.zig").Application;
 
 pub var app: Application = undefined;
@@ -9,6 +10,7 @@ export fn start() void {
 
     const allocator = std.heap.wasm_allocator;
     app = Application.init(allocator);
+    event.app = &app;
 
     if (app.start()) |_| {
         console.log("Application started");
