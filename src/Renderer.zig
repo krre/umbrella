@@ -32,7 +32,7 @@ pub const Renderer = struct {
         const texture_view = texture.createView();
         defer texture_view.deinit();
 
-        const color = GpuColor.init(1.0, 0.0, 0.0, 1.0);
+        const color = GpuColor.init(0.25, 0.23, 0.23, 1.0);
 
         const color_attachment = GpuRenderPassColorAttachment.init(texture_view, GpuLoadOp.clear, GpuStoreOp.store, color);
         defer color_attachment.deinit();
