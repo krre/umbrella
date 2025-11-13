@@ -21,7 +21,7 @@ function saveObject(object) {
     return id;
 }
 
-async function init() {
+async function gpuInit() {
     const gpu = navigator.gpu;
 
     if (!gpu) {
@@ -65,7 +65,9 @@ async function init() {
         device,
         format: presentationFormat,
     });
+}
 
+async function wasmInit() {
     const imports = {
         env: {
             consoleLog: (ptr, len) => {
@@ -169,7 +171,10 @@ async function init() {
         }
     };
 
-    const wasm = await WebAssembly.instantiateStreaming(fetch("lib.wasm"), imports);
+    wasm = await WebAssembly.instantiateStreaming(fetch("lib.wasm"), imports);
+}
+
+function eventsInit() {
     const exports = wasm.instance.exports;
 
     window.addEventListener('resize', function () {
@@ -201,10 +206,14 @@ async function init() {
         event.preventDefault();
     }, { passive: false });
 
-
     window.addEventListener('contextmenu', event => event.preventDefault());
+}
 
-    exports.start();
+async function init() {
+    await gpuInit();
+    await wasmInit();
+    eventsInit();
+    wasm.instance.exports.start();
 }
 
 init();
