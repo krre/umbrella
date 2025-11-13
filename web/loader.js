@@ -177,8 +177,32 @@ async function init() {
     });
 
     window.addEventListener('mousemove', function (event) {
-        exports.mouseMove(event.clientX, event.clientY)
+        exports.mouseMove(event.clientX, event.clientY);
     });
+
+    window.addEventListener('click', function (event) {
+        exports.mouseClick(event.clientX, event.clientY);
+    });
+
+    window.addEventListener('dblclick', function (event) {
+        exports.mouseDoubleClick(event.clientX, event.clientY);
+    });
+
+    window.addEventListener('mousedown', function (event) {
+        exports.mouseDown(event.clientX, event.clientY, event.button);
+    });
+
+    window.addEventListener('mouseup', function (event) {
+        exports.mouseUp(event.clientX, event.clientY, event.button);
+    });
+
+    window.addEventListener('wheel', function (event) {
+        exports.mouseWheel(event.clientX, event.clientY, event.deltaY);
+        event.preventDefault();
+    }, { passive: false });
+
+
+    window.addEventListener('contextmenu', event => event.preventDefault());
 
     exports.start();
 }
