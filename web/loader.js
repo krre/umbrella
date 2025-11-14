@@ -207,6 +207,15 @@ function eventsInit() {
     }, { passive: false });
 
     window.addEventListener('contextmenu', event => event.preventDefault());
+
+    window.addEventListener("keydown", function (event) {
+        exports.keyDown(event.key.charCodeAt(0))
+    });
+
+    window.addEventListener("keyup", function (event) {
+        exports.keyUp(event.key.charCodeAt(0))
+    });
+
 }
 
 async function init() {

@@ -61,4 +61,14 @@ pub const Ui3d = struct {
         _ = y;
         _ = delta_y;
     }
+
+    pub fn keyDown(self: *Ui3d, code: u32) void {
+        _ = self;
+        _ = code;
+    }
+
+    pub fn keyUp(self: *Ui3d, code: u32) void {
+        _ = self;
+        _ = code;
+    }
 };

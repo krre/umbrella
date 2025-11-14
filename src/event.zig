@@ -29,3 +29,11 @@ export fn mouseUp(x: i32, y: i32, button: u8) void {
 export fn mouseWheel(x: i32, y: i32, delta_y: i8) void {
     ui.mouseWheel(x, y, delta_y);
 }
+
+export fn keyDown(code: u32) void {
+    ui.keyDown(code);
+}
+
+export fn keyUp(code: u32) void {
+    ui.keyUp(code);
+}
