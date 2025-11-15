@@ -74,6 +74,12 @@ async function wasmInit() {
                 const bytes = new Uint8Array(wasm.instance.exports.memory.buffer, ptr, len);
                 console.log(new TextDecoder("utf8").decode(bytes));
             },
+            windowWidth: () => {
+                return window.innerWidth;
+            },
+            windowHeight: () => {
+                return window.innerHeight;
+            },
             destroy: (id) => {
                 objects[id].destroy()
                 delete objects[id]
