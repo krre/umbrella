@@ -1,19 +1,17 @@
 const Color = @import("../../ui/Color.zig").Color;
-const webgpu = @import("../webgpu.zig");
-const Id = webgpu.Id;
-
-extern fn color(r: f32, g: f32, b: f32, a: f32) Id;
+const js = @import("../../js.zig");
+const Id = @import("../../types.zig").Id;
 
 pub const GpuColor = struct {
     id: Id,
 
-    pub fn init(c: Color) GpuColor {
+    pub fn init(color: Color) GpuColor {
         return GpuColor{
-            .id = color(c.r, c.g, c.b, c.a),
+            .id = js.color(color.r, color.g, color.b, color.a),
         };
     }
 
     pub fn deinit(self: GpuColor) void {
-        webgpu.remove(self.id);
+        js.remove(self.id);
     }
 };

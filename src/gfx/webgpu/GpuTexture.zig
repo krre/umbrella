@@ -1,9 +1,7 @@
 const webgpu = @import("../webgpu.zig");
 const Id = webgpu.Id;
 const GpuTextureView = @import("GpuTextureView.zig").GpuTextureView;
-
-extern fn destroyTexture(id: Id) void;
-extern fn textureCreateView(id: Id) Id;
+const js = @import("../../js.zig");
 
 pub const GpuTexture = struct {
     id: Id,
@@ -15,10 +13,10 @@ pub const GpuTexture = struct {
     }
 
     pub fn deinit(self: GpuTexture) void {
-        webgpu.destroy(self.id);
+        js.destroy(self.id);
     }
 
     pub fn createView(self: GpuTexture) GpuTextureView {
-        return GpuTextureView.init(textureCreateView(self.id));
+        return GpuTextureView.init(js.textureCreateView(self.id));
     }
 };

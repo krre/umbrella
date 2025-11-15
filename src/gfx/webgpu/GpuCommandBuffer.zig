@@ -1,5 +1,5 @@
-const webgpu = @import("../webgpu.zig");
-const Id = webgpu.Id;
+const js = @import("../../js.zig");
+const Id = @import("../../types.zig").Id;
 
 pub const GpuCommandBuffer = struct {
     id: Id,
@@ -11,6 +11,6 @@ pub const GpuCommandBuffer = struct {
     }
 
     pub fn deinit(self: GpuCommandBuffer) void {
-        webgpu.remove(self.id);
+        js.remove(self.id);
     }
 };

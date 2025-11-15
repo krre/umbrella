@@ -4,8 +4,7 @@ const GpuColor = webgpu.GpuColor;
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
 const GpuTextureView = @import("GpuTextureView.zig").GpuTextureView;
-
-extern fn renderPassColorAttachment(view: Id, load_op: u8, store_op: u8, color_value: Id) Id;
+const js = @import("../../js.zig");
 
 pub const GpuRenderPassColorAttachment = struct {
     id: Id,
@@ -22,7 +21,7 @@ pub const GpuRenderPassColorAttachment = struct {
         }
 
         return GpuRenderPassColorAttachment{
-            .id = renderPassColorAttachment(view.id, @intFromEnum(load_op), @intFromEnum(store_op), color_id),
+            .id = js.renderPassColorAttachment(view.id, @intFromEnum(load_op), @intFromEnum(store_op), color_id),
             .view = view,
             .load_op = load_op,
             .store_op = store_op,
@@ -31,7 +30,7 @@ pub const GpuRenderPassColorAttachment = struct {
     }
 
     pub fn deinit(self: GpuRenderPassColorAttachment) void {
-        webgpu.remove(self.id);
+        js.remove(self.id);
 
         if (self.clear_value != null) {
             self.clear_value.?.deinit();

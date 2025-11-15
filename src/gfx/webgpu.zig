@@ -22,6 +22,3 @@ pub const GpuStoreOp = enum {
     store,
     discard,
 };
-
-pub extern fn destroy(id: Id) void;
-pub extern fn remove(id: Id) void;
