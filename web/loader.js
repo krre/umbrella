@@ -3,10 +3,10 @@ let wasm;
 const objects = {};
 let objectIdCounter = 0;
 
-let gpuId = -1;
-let adapterId = -1;
-let deviceId = -1;
-let canvasContextId = -1;
+let gpuId = 0;
+let adapterId = 0;
+let deviceId = 0;
+let canvasContextId = 0;
 
 const loadOps = ["load", "clear"];
 const storeOps = ["store", "discard"];
