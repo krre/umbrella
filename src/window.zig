@@ -1,10 +1,9 @@
-extern fn windowWidth() u16;
-extern fn windowHeight() u16;
+const js = @import("js.zig");
 
 pub fn width() u16 {
-    return windowWidth();
+    return js.windowWidth();
 }
 
 pub fn height() u16 {
-    return windowHeight();
+    return js.windowHeight();
 }
