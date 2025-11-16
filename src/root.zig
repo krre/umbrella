@@ -1,7 +1,7 @@
 const std = @import("std");
 const console = @import("console.zig");
 const js = @import("js.zig");
-const Ui3d = @import("ui/Ui3d.zig").Ui3d;
+const Ui3d = @import("ui/Ui3d.zig");
 
 pub var ui: Ui3d = undefined;
 

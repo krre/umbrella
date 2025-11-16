@@ -1,17 +1,17 @@
-const Color = @import("../../ui/Color.zig").Color;
+const Color = @import("../../ui/Color.zig");
 const js = @import("../../js.zig");
 const Id = @import("../../types.zig").Id;
 
-pub const GpuColor = struct {
-    id: Id,
+const GpuColor = @This();
 
-    pub fn init(color: Color) GpuColor {
-        return GpuColor{
-            .id = js.color(color.r, color.g, color.b, color.a),
-        };
-    }
+id: Id,
 
-    pub fn deinit(self: GpuColor) void {
-        js.remove(self.id);
-    }
-};
+pub fn init(color: Color) GpuColor {
+    return GpuColor{
+        .id = js.color(color.r, color.g, color.b, color.a),
+    };
+}
+
+pub fn deinit(self: GpuColor) void {
+    js.remove(self.id);
+}

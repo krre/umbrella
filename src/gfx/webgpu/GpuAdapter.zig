@@ -1,12 +1,12 @@
 const js = @import("../../js.zig");
 const Id = @import("../../types.zig").Id;
 
-pub const GpuAdapter = struct {
-    id: Id,
+const GpuAdapter = @This();
 
-    pub fn init() GpuAdapter {
-        return GpuAdapter{
-            .id = js.adapter(),
-        };
-    }
-};
+id: Id,
+
+pub fn init() GpuAdapter {
+    return GpuAdapter{
+        .id = js.adapter(),
+    };
+}

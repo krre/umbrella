@@ -2,16 +2,16 @@ const webgpu = @import("../webgpu.zig");
 const Id = webgpu.Id;
 const js = @import("../../js.zig");
 
-pub const GpuTextureView = struct {
-    id: Id,
+const GpuTextureView = @This();
 
-    pub fn init(id: Id) GpuTextureView {
-        return GpuTextureView{
-            .id = id,
-        };
-    }
+id: Id,
 
-    pub fn deinit(self: GpuTextureView) void {
-        js.remove(self.id);
-    }
-};
+pub fn init(id: Id) GpuTextureView {
+    return GpuTextureView{
+        .id = id,
+    };
+}
+
+pub fn deinit(self: GpuTextureView) void {
+    js.remove(self.id);
+}

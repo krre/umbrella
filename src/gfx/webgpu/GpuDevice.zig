@@ -4,22 +4,22 @@ const GpuQueue = webgpu.GpuQueue;
 const Id = webgpu.Id;
 const js = @import("../../js.zig");
 
-pub const GpuDevice = struct {
-    id: Id,
+const GpuDevice = @This();
 
-    pub fn init() GpuDevice {
-        return GpuDevice{
-            .id = js.device(),
-        };
-    }
+id: Id,
 
-    pub fn createCommandEncoder(self: GpuDevice) GpuCommandEncoder {
-        return GpuCommandEncoder{
-            .id = js.deviceCreateCommandEncoder(self.id),
-        };
-    }
+pub fn init() GpuDevice {
+    return GpuDevice{
+        .id = js.device(),
+    };
+}
 
-    pub fn queue(self: GpuDevice) GpuQueue {
-        return GpuQueue.init(js.deviceQueue(self.id));
-    }
-};
+pub fn createCommandEncoder(self: GpuDevice) GpuCommandEncoder {
+    return GpuCommandEncoder{
+        .id = js.deviceCreateCommandEncoder(self.id),
+    };
+}
+
+pub fn queue(self: GpuDevice) GpuQueue {
+    return GpuQueue.init(js.deviceQueue(self.id));
+}

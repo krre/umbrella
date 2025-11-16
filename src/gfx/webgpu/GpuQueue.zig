@@ -3,24 +3,24 @@ const GpuCommandBuffer = webgpu.GpuCommandBuffer;
 const Id = webgpu.Id;
 const js = @import("../../js.zig");
 
-pub const GpuQueue = struct {
-    id: Id,
+const GpuQueue = @This();
 
-    pub fn init(id: Id) GpuQueue {
-        return GpuQueue{
-            .id = id,
-        };
-    }
+id: Id,
 
-    pub fn deinit(self: GpuQueue) void {
-        js.remove(self.id);
-    }
+pub fn init(id: Id) GpuQueue {
+    return GpuQueue{
+        .id = id,
+    };
+}
 
-    pub fn addCommandBuffer(self: GpuQueue, buffer: GpuCommandBuffer) void {
-        js.queueAddCommandBuffer(self.id, buffer.id);
-    }
+pub fn deinit(self: GpuQueue) void {
+    js.remove(self.id);
+}
 
-    pub fn submit(self: GpuQueue) void {
-        js.queueSubmit(self.id);
-    }
-};
+pub fn addCommandBuffer(self: GpuQueue, buffer: GpuCommandBuffer) void {
+    js.queueAddCommandBuffer(self.id, buffer.id);
+}
+
+pub fn submit(self: GpuQueue) void {
+    js.queueSubmit(self.id);
+}

@@ -3,37 +3,37 @@ const Id = webgpu.Id;
 const GpuColor = webgpu.GpuColor;
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
-const GpuTextureView = @import("GpuTextureView.zig").GpuTextureView;
+const GpuTextureView = webgpu.GpuTextureView;
 const js = @import("../../js.zig");
 
-pub const GpuRenderPassColorAttachment = struct {
-    id: Id,
-    view: GpuTextureView,
-    load_op: GpuLoadOp,
-    store_op: GpuStoreOp,
-    clear_value: ?GpuColor,
+const GpuRenderPassColorAttachment = @This();
 
-    pub fn init(view: GpuTextureView, load_op: GpuLoadOp, store_op: GpuStoreOp, clear_value: ?GpuColor) GpuRenderPassColorAttachment {
-        var color_id: Id = 0;
+id: Id,
+view: GpuTextureView,
+load_op: GpuLoadOp,
+store_op: GpuStoreOp,
+clear_value: ?GpuColor,
 
-        if (clear_value) |value| {
-            color_id = value.id;
-        }
+pub fn init(view: GpuTextureView, load_op: GpuLoadOp, store_op: GpuStoreOp, clear_value: ?GpuColor) GpuRenderPassColorAttachment {
+    var color_id: Id = 0;
 
-        return GpuRenderPassColorAttachment{
-            .id = js.renderPassColorAttachment(view.id, @intFromEnum(load_op), @intFromEnum(store_op), color_id),
-            .view = view,
-            .load_op = load_op,
-            .store_op = store_op,
-            .clear_value = clear_value,
-        };
+    if (clear_value) |value| {
+        color_id = value.id;
     }
 
-    pub fn deinit(self: GpuRenderPassColorAttachment) void {
-        js.remove(self.id);
+    return GpuRenderPassColorAttachment{
+        .id = js.renderPassColorAttachment(view.id, @intFromEnum(load_op), @intFromEnum(store_op), color_id),
+        .view = view,
+        .load_op = load_op,
+        .store_op = store_op,
+        .clear_value = clear_value,
+    };
+}
 
-        if (self.clear_value != null) {
-            self.clear_value.?.deinit();
-        }
+pub fn deinit(self: GpuRenderPassColorAttachment) void {
+    js.remove(self.id);
+
+    if (self.clear_value != null) {
+        self.clear_value.?.deinit();
     }
-};
+}

@@ -1,4 +1,4 @@
-const Ui3d = @import("ui/Ui3d.zig").Ui3d;
+const Ui3d = @import("ui/Ui3d.zig");
 const Id = @import("types.zig").Id;
 
 pub var ui: *Ui3d = undefined;

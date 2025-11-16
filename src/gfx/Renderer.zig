@@ -10,53 +10,53 @@ const GpuCanvasContext = webgpu.GpuCanvasContext;
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
 
-pub const Renderer = struct {
-    gpu: Gpu,
-    adapter: GpuAdapter,
-    device: GpuDevice,
-    canvas_context: GpuCanvasContext,
+pub const Renderer = @This();
 
-    pub fn init() Renderer {
-        return Renderer{
-            .gpu = Gpu.init(),
-            .adapter = GpuAdapter.init(),
-            .device = GpuDevice.init(),
-            .canvas_context = GpuCanvasContext.init(),
-        };
-    }
+gpu: Gpu,
+adapter: GpuAdapter,
+device: GpuDevice,
+canvas_context: GpuCanvasContext,
 
-    pub fn clear(self: *Renderer) void {
-        const texture = self.canvas_context.getCurrentTexture();
-        defer texture.deinit();
+pub fn init() Renderer {
+    return Renderer{
+        .gpu = Gpu.init(),
+        .adapter = GpuAdapter.init(),
+        .device = GpuDevice.init(),
+        .canvas_context = GpuCanvasContext.init(),
+    };
+}
 
-        const texture_view = texture.createView();
-        defer texture_view.deinit();
+pub fn clear(self: *Renderer) void {
+    const texture = self.canvas_context.getCurrentTexture();
+    defer texture.deinit();
 
-        const color = GpuColor.init(.{ .r = 0.25, .g = 0.23, .b = 0.23 });
+    const texture_view = texture.createView();
+    defer texture_view.deinit();
 
-        const color_attachment = GpuRenderPassColorAttachment.init(texture_view, GpuLoadOp.clear, GpuStoreOp.store, color);
-        defer color_attachment.deinit();
+    const color = GpuColor.init(.{ .r = 0.25, .g = 0.23, .b = 0.23 });
 
-        const render_pass_descriptor = GpuRenderPassDescriptor.init();
-        defer render_pass_descriptor.deinit();
+    const color_attachment = GpuRenderPassColorAttachment.init(texture_view, GpuLoadOp.clear, GpuStoreOp.store, color);
+    defer color_attachment.deinit();
 
-        render_pass_descriptor.addColorAttachment(color_attachment);
+    const render_pass_descriptor = GpuRenderPassDescriptor.init();
+    defer render_pass_descriptor.deinit();
 
-        const command_encoder = self.device.createCommandEncoder();
-        defer command_encoder.deinit();
+    render_pass_descriptor.addColorAttachment(color_attachment);
 
-        const render_pass = command_encoder.beginRenderPass(render_pass_descriptor);
-        defer render_pass.deinit();
+    const command_encoder = self.device.createCommandEncoder();
+    defer command_encoder.deinit();
 
-        render_pass.end();
+    const render_pass = command_encoder.beginRenderPass(render_pass_descriptor);
+    defer render_pass.deinit();
 
-        const command_buffer = command_encoder.finish();
-        defer command_buffer.deinit();
+    render_pass.end();
 
-        const queue = self.device.queue();
-        defer queue.deinit();
+    const command_buffer = command_encoder.finish();
+    defer command_buffer.deinit();
 
-        queue.addCommandBuffer(command_buffer);
-        queue.submit();
-    }
-};
+    const queue = self.device.queue();
+    defer queue.deinit();
+
+    queue.addCommandBuffer(command_buffer);
+    queue.submit();
+}
