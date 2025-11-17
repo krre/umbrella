@@ -10,6 +10,8 @@ const GpuCanvasContext = webgpu.GpuCanvasContext;
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
 
+const Widget = @import("../ui/Widget.zig");
+
 pub const Renderer = @This();
 
 gpu: Gpu,
@@ -61,6 +63,7 @@ pub fn clear(self: *Renderer) void {
     queue.submit();
 }
 
-pub fn render(self: *Renderer) void {
+pub fn render(self: *Renderer, widget: *Widget) void {
     self.clear();
+    _ = widget;
 }

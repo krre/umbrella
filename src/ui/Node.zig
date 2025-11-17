@@ -4,11 +4,8 @@ const Node = @This();
 parent: ?*Node,
 children: std.ArrayList(*Node),
 
-pub fn init(allocator: std.mem.Allocator) Node {
-    return Node{
-        .parent = null,
-        .children = std.ArrayList(*Node).init(allocator),
-    };
+pub fn init() Node {
+    return Node{ .parent = null, .children = std.ArrayList(*Node).empty };
 }
 
 pub fn deinit(self: *Node) void {

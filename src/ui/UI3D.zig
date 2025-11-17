@@ -1,17 +1,17 @@
-const Renderer = @import("../gfx/Renderer.zig");
 const std = @import("std");
 const Allocator = std.mem.Allocator;
+const Renderer = @import("../gfx/Renderer.zig");
+const Widget = @import("Widget.zig");
+const UmbrellaIDE = @import("../ide/UmbrellaIDE.zig");
 
 const UI3D = @This();
 
 allocator: Allocator,
 renderer: Renderer,
+ide: UmbrellaIDE,
 
 pub fn init(allocator: Allocator) UI3D {
-    return UI3D{
-        .allocator = allocator,
-        .renderer = Renderer.init(),
-    };
+    return UI3D{ .allocator = allocator, .renderer = Renderer.init(), .ide = UmbrellaIDE.init(allocator) };
 }
 
 pub fn start(self: *UI3D) !void {
@@ -19,7 +19,7 @@ pub fn start(self: *UI3D) !void {
 }
 
 pub fn render(self: *UI3D) void {
-    self.renderer.render();
+    self.renderer.render(&self.ide.root);
 }
 
 pub fn resize(self: *UI3D, width: usize, height: usize) void {
