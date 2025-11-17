@@ -15,60 +15,64 @@ pub fn init(allocator: Allocator) UI3D {
 }
 
 pub fn start(self: *UI3D) !void {
-    self.renderer.clear();
+    self.render();
+}
+
+pub fn render(self: *UI3D) void {
+    self.renderer.render();
 }
 
 pub fn resize(self: *UI3D, width: usize, height: usize) void {
-    _ = self;
     _ = width;
     _ = height;
+    self.render();
 }
 
 pub fn mouseMove(self: *UI3D, x: i32, y: i32) void {
-    _ = self;
     _ = x;
     _ = y;
+    self.render();
 }
 
 pub fn mouseClick(self: *UI3D, x: i32, y: i32) void {
-    _ = self;
     _ = x;
     _ = y;
+    self.render();
 }
 
 pub fn mouseDoubleClick(self: *UI3D, x: i32, y: i32) void {
-    _ = self;
     _ = x;
     _ = y;
+    self.render();
 }
 
 pub fn mouseDown(self: *UI3D, x: i32, y: i32, button: u8) void {
-    _ = self;
     _ = x;
     _ = y;
     _ = button;
+    self.render();
 }
 
 pub fn mouseUp(self: *UI3D, x: i32, y: i32, button: u8) void {
-    _ = self;
     _ = x;
     _ = y;
     _ = button;
+    self.render();
 }
 
 pub fn mouseWheel(self: *UI3D, x: i32, y: i32, delta_y: i8) void {
-    _ = self;
     _ = x;
     _ = y;
     _ = delta_y;
+    self.render();
 }
 
 pub fn keyDown(self: *UI3D, code: u32) void {
-    _ = self;
     _ = code;
+    self.render();
 }
 
 pub fn keyUp(self: *UI3D, code: u32) void {
-    _ = self;
     _ = code;
+    self.render();
 }

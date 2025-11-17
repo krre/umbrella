@@ -60,3 +60,7 @@ pub fn clear(self: *Renderer) void {
     queue.addCommandBuffer(command_buffer);
     queue.submit();
 }
+
+pub fn render(self: *Renderer) void {
+    self.clear();
+}
