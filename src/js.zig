@@ -1,7 +1,7 @@
-const Ui3d = @import("ui/Ui3d.zig");
+const UI3D = @import("ui/UI3D.zig");
 const Id = @import("types.zig").Id;
 
-pub var ui: *Ui3d = undefined;
+pub var ui: *UI3D = undefined;
 
 // Events
 export fn resize(width: u32, height: u32) void {
