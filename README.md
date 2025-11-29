@@ -1,2 +1,2 @@
 # Umbrella
-Web IDE for Umbra programming language.
+Web IDE for [Umbra](https://github.com/krre/umbra) programming language.
