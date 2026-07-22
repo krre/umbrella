@@ -8,8 +8,8 @@ let adapterId = 0;
 let deviceId = 0;
 let canvasContextId = 0;
 
-const loadOps = ["load", "clear"];
-const storeOps = ["store", "discard"];
+const loadOps = ['load', 'clear'];
+const storeOps = ['store', 'discard'];
 
 function nextObjectId() {
     return ++objectIdCounter;
@@ -72,11 +72,11 @@ async function wasmInit() {
         env: {
             consoleLog: (ptr, len) => {
                 const bytes = new Uint8Array(wasm.instance.exports.memory.buffer, ptr, len);
-                console.log(new TextDecoder("utf8").decode(bytes));
+                console.log(new TextDecoder('utf8').decode(bytes));
             },
             consoleErr: (ptr, len) => {
               const bytes = new Uint8Array(wasm.instance.exports.memory.buffer, ptr, len);
-              console.error(new TextDecoder("utf8").decode(bytes));
+              console.error(new TextDecoder('utf8').decode(bytes));
             },
             windowWidth: () => {
                 return window.innerWidth;
@@ -181,7 +181,7 @@ async function wasmInit() {
         }
     };
 
-    wasm = await WebAssembly.instantiateStreaming(fetch("lib.wasm"), imports);
+    wasm = await WebAssembly.instantiateStreaming(fetch('lib.wasm'), imports);
 }
 
 function eventsInit() {
@@ -218,11 +218,11 @@ function eventsInit() {
 
     window.addEventListener('contextmenu', event => event.preventDefault());
 
-    window.addEventListener("keydown", function (event) {
+    window.addEventListener('keydown', function (event) {
         exports.keyDown(event.key.charCodeAt(0))
     });
 
-    window.addEventListener("keyup", function (event) {
+    window.addEventListener('keyup', function (event) {
         exports.keyUp(event.key.charCodeAt(0))
     });
 
