@@ -8,8 +8,7 @@ pub var ui: UI3D = undefined;
 export fn start() void {
     console.log("UI initing begin");
 
-    const allocator = std.heap.wasm_allocator;
-    ui = UI3D.init(allocator);
+    ui = UI3D.init(std.heap.wasm_allocator);
     js.ui = &ui;
 
     if (ui.start()) |_| {
