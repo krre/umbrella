@@ -11,6 +11,7 @@ const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
 
 const Widget = @import("../ui/Widget.zig");
+const Color = @import("../ui/Color.zig");
 
 pub const Renderer = @This();
 
@@ -35,7 +36,7 @@ pub fn clear(self: *Renderer) void {
     const texture_view = texture.createView();
     defer texture_view.deinit();
 
-    const color = GpuColor.init(.{ .r = 0.25, .g = 0.23, .b = 0.23 });
+    const color = GpuColor.init(Color.gray);
 
     const color_attachment = GpuRenderPassColorAttachment.init(texture_view, GpuLoadOp.clear, GpuStoreOp.store, color);
     defer color_attachment.deinit();
