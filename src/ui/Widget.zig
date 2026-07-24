@@ -1,6 +1,7 @@
 const std = @import("std");
-const Widget = @This();
 const Node = @import("Node.zig");
+
+const Widget = @This();
 
 node: Node,
 vtable: *const VTable,
