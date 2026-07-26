@@ -4,4 +4,8 @@ pub const Pos3D = struct {
     z: i32,
 };
 
-pub const Size3D = struct { width: u32, height: u32, depth: u32 };
+pub const Size3D = struct {
+    width: u32,
+    height: u32,
+    depth: u32,
+};

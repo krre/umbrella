@@ -3,4 +3,7 @@ pub const Pos2D = struct {
     y: i32,
 };
 
-pub const Size2D = struct { width: u32, height: u32 };
+pub const Size2D = struct {
+    width: u32,
+    height: u32,
+};
