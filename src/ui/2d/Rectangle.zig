@@ -7,8 +7,8 @@ const Rectangle = @This();
 
 color: Color = Color.white,
 border: Border,
-widget2D: Widget2D,
+widget: Widget2D,
 
 pub fn init(allocator: std.mem.Allocator) Rectangle {
-    return Rectangle{ .widget2D = Widget2D.init(allocator) };
+    return Rectangle{ .widget = Widget2D.init(allocator) };
 }
