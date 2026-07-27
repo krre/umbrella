@@ -12,9 +12,9 @@ pub fn err(message: []const u8) void {
     consoleErr(message.ptr, message.len);
 }
 
-pub fn fmtLog(comptime fmt: []const u8, args: anytype) void {
+pub fn fmtLog(comptime fmt: []const u8, args: anytype) !void {
     const allocator = std.heap.wasm_allocator;
-    const str = std.fmt.allocPrint(allocator, fmt, args) catch "Allocator error";
+    const str = try std.fmt.allocPrint(allocator, fmt, args);
     defer allocator.free(str);
     log(str);
 }
