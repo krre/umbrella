@@ -1,17 +1,20 @@
 const std = @import("std");
 const Allocator = std.mem.Allocator;
 const Widget = @import("../ui/Widget.zig");
+const UI3D = @import("../ui/UI3D.zig");
 
 const UmbrellaIDE = @This();
 
-root: Widget,
+pub var ui: UI3D = undefined;
+var root: Widget = undefined;
 
 const vtable = Widget.VTable{
     .draw = &draw,
 };
 
-pub fn init(allocator: Allocator) UmbrellaIDE {
-    return UmbrellaIDE{ .root = Widget.init(allocator, &vtable) };
+pub fn init(allocator: Allocator) void {
+    root = Widget.init(allocator, &vtable);
+    ui = UI3D.init(allocator, &root);
 }
 
 fn draw(self: *Widget) void {

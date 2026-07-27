@@ -1,17 +1,17 @@
 const std = @import("std");
 const console = @import("console.zig");
-const js = @import("js.zig");
 const UI3D = @import("ui/UI3D.zig");
 
-pub var ui: UI3D = undefined;
+const js = @import("js.zig");
+const ide = @import("ide/UmbrellaIDE.zig");
 
 export fn start() void {
     console.log("UI initing begin");
 
-    ui = UI3D.init(std.heap.wasm_allocator);
-    js.ui = &ui;
+    ide.init(std.heap.wasm_allocator);
+    js.ui = &ide.ui;
 
-    if (ui.start()) |_| {
+    if (js.ui.start()) |_| {
         console.log("UI started");
     } else |_| {
         console.log("UI start failure");

@@ -8,10 +8,10 @@ const UI3D = @This();
 
 allocator: Allocator,
 renderer: Renderer,
-ide: UmbrellaIDE,
+root_widget: *Widget,
 
-pub fn init(allocator: Allocator) UI3D {
-    return UI3D{ .allocator = allocator, .renderer = Renderer.init(), .ide = UmbrellaIDE.init(allocator) };
+pub fn init(allocator: Allocator, root_widget: *Widget) UI3D {
+    return UI3D{ .allocator = allocator, .renderer = Renderer.init(), .root_widget = root_widget };
 }
 
 pub fn start(self: *UI3D) !void {
@@ -19,7 +19,7 @@ pub fn start(self: *UI3D) !void {
 }
 
 pub fn render(self: *UI3D) void {
-    self.renderer.render(&self.ide.root);
+    self.renderer.render(self.root_widget);
 }
 
 pub fn resize(self: *UI3D, width: usize, height: usize) void {
