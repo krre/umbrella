@@ -10,7 +10,7 @@ const GpuCanvasContext = webgpu.GpuCanvasContext;
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
 
-const Widget = @import("../ui/Widget.zig");
+const Widget = @import("../ui/widget/Widget.zig");
 const Color = @import("../ui/Color.zig");
 
 pub const Renderer = @This();

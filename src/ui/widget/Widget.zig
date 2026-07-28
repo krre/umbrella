@@ -1,7 +1,8 @@
 const std = @import("std");
-const Node = @import("Node.zig");
-const Pos = @import("geometry.zig").Pos;
-const Size = @import("geometry.zig").Size;
+const Node = @import("../Node.zig");
+const geometry = @import("../geometry.zig");
+const Pos = geometry.Pos;
+const Size = geometry.Size;
 
 const Widget = @This();
 
