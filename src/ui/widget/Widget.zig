@@ -26,10 +26,6 @@ pub fn init(allocator: std.mem.Allocator, vtable: *const VTable) Widget {
     };
 }
 
-pub fn asNode(self: *Widget) *Node {
-    return &self.node;
-}
-
 pub fn move(self: *Widget, pos: Pos) void {
     self.pos = pos;
 }
