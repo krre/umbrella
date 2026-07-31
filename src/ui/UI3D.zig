@@ -2,7 +2,6 @@ const std = @import("std");
 const Allocator = std.mem.Allocator;
 const Renderer = @import("../gfx/Renderer.zig");
 const Widget = @import("widget/Widget.zig");
-const UmbrellaIDE = @import("../ide/UmbrellaIDE.zig");
 
 const UI3D = @This();
 
