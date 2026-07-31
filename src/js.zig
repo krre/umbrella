@@ -1,43 +1,43 @@
-const UI3D = @import("ui/UI3D.zig");
+const Application = @import("ui/Application.zig");
 const Id = @import("types.zig").Id;
 
-pub var ui: *UI3D = undefined;
+pub var app: *Application = undefined;
 
 // Events
 export fn resize(width: u32, height: u32) void {
-    ui.resize(width, height);
+    app.resize(width, height);
 }
 
 export fn mouseMove(x: i32, y: i32) void {
-    ui.mouseMove(x, y);
+    app.mouseMove(x, y);
 }
 
 export fn mouseClick(x: i32, y: i32) void {
-    ui.mouseClick(x, y);
+    app.mouseClick(x, y);
 }
 
 export fn mouseDoubleClick(x: i32, y: i32) void {
-    ui.mouseDoubleClick(x, y);
+    app.mouseDoubleClick(x, y);
 }
 
 export fn mouseDown(x: i32, y: i32, button: u8) void {
-    ui.mouseDown(x, y, button);
+    app.mouseDown(x, y, button);
 }
 
 export fn mouseUp(x: i32, y: i32, button: u8) void {
-    ui.mouseUp(x, y, button);
+    app.mouseUp(x, y, button);
 }
 
 export fn mouseWheel(x: i32, y: i32, delta_y: i8) void {
-    ui.mouseWheel(x, y, delta_y);
+    app.mouseWheel(x, y, delta_y);
 }
 
 export fn keyDown(code: u32) void {
-    ui.keyDown(code);
+    app.keyDown(code);
 }
 
 export fn keyUp(code: u32) void {
-    ui.keyUp(code);
+    app.keyUp(code);
 }
 
 // Common
