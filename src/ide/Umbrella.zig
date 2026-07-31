@@ -3,7 +3,7 @@ const Allocator = std.mem.Allocator;
 const Box = @import("../ui/widget/Box.zig");
 const Application = @import("../ui/Application.zig");
 
-const UmbrellaIDE = @This();
+const Umbrella = @This();
 
 pub var app: Application = undefined;
 var root: Box = undefined;
