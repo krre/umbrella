@@ -1,14 +1,14 @@
 const std = @import("std");
 const Node = @import("../node/Node.zig");
 const geometry = @import("../geometry.zig");
-const Pos = geometry.Pos;
-const Size = geometry.Size;
+const Pos3D = geometry.Pos3D;
+const Size3D = geometry.Size3D;
 
 const Widget = @This();
 
 node: Node,
-pos: Pos,
-size: Size,
+pos: Pos3D,
+size: Size3D,
 vtable: *const VTable,
 allocator: std.mem.Allocator,
 
@@ -26,11 +26,11 @@ pub fn init(allocator: std.mem.Allocator, vtable: *const VTable) Widget {
     };
 }
 
-pub fn move(self: *Widget, pos: Pos) void {
+pub fn move(self: *Widget, pos: Pos3D) void {
     self.pos = pos;
 }
 
-pub fn resize(self: *Widget, size: Size) void {
+pub fn resize(self: *Widget, size: Size3D) void {
     self.size = size;
 }
 
