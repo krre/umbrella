@@ -5,31 +5,31 @@ pub var app: *Application = undefined;
 
 // Events
 export fn resize(width: u32, height: u32) void {
-    app.resize(width, height);
+    app.resize(.{ .width = width, .height = height });
 }
 
 export fn mouseMove(x: i32, y: i32) void {
-    app.mouseMove(x, y);
+    app.mouseMove(.{ .x = x, .y = y });
 }
 
 export fn mouseClick(x: i32, y: i32) void {
-    app.mouseClick(x, y);
+    app.mouseClick(.{ .x = x, .y = y });
 }
 
 export fn mouseDoubleClick(x: i32, y: i32) void {
-    app.mouseDoubleClick(x, y);
+    app.mouseDoubleClick(.{ .x = x, .y = y });
 }
 
 export fn mouseDown(x: i32, y: i32, button: u8) void {
-    app.mouseDown(x, y, button);
+    app.mouseDown(.{ .x = x, .y = y }, button);
 }
 
 export fn mouseUp(x: i32, y: i32, button: u8) void {
-    app.mouseUp(x, y, button);
+    app.mouseUp(.{ .x = x, .y = y }, button);
 }
 
 export fn mouseWheel(x: i32, y: i32, delta_y: i8) void {
-    app.mouseWheel(x, y, delta_y);
+    app.mouseWheel(.{ .x = x, .y = y }, delta_y);
 }
 
 export fn keyDown(code: u32) void {
