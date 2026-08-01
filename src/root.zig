@@ -6,14 +6,14 @@ const js = @import("js.zig");
 const umbrella = @import("ide/Umbrella.zig");
 
 export fn start() void {
-    console.log("UI initing begin");
+    console.log("Application initing");
 
     umbrella.init(std.heap.wasm_allocator);
     js.app = &umbrella.app;
 
     if (js.app.start()) |_| {
-        console.log("UI started");
+        console.log("Application started");
     } else |_| {
-        console.log("UI start failure");
+        console.log("Application start failure");
     }
 }
