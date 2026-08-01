@@ -7,8 +7,8 @@ const Size3D = geometry.Size3D;
 const Widget = @This();
 
 node: Node,
-pos: Pos3D,
-size: Size3D,
+pos: Pos3D = .{ .x = 0, .y = 0, .z = 0 },
+size: Size3D = .{ .width = 0, .height = 0, .depth = 0 },
 vtable: *const VTable,
 allocator: std.mem.Allocator,
 
@@ -19,8 +19,6 @@ pub const VTable = struct {
 pub fn init(allocator: std.mem.Allocator, vtable: *const VTable) Widget {
     return Widget{
         .node = Node.init(),
-        .pos = .{ .x = 0, .y = 0, .z = 0 },
-        .size = .{ .width = 0, .height = 0, .depth = 0 },
         .vtable = vtable,
         .allocator = allocator,
     };
