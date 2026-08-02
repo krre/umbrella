@@ -4,16 +4,16 @@ const Allocator = std.mem.Allocator;
 extern fn consoleLog(message: [*]const u8, length: usize) void;
 extern fn consoleErr(message: [*]const u8, length: usize) void;
 
-pub fn log(message: []const u8) void {
+pub fn log(comptime fmt: []const u8, args: anytype) void {
+    const message = formatMessage(fmt, args);
     consoleLog(message.ptr, message.len);
 }
 
-pub fn err(message: []const u8) void {
+pub fn err(comptime fmt: []const u8, args: anytype) void {
+    const message = formatMessage(fmt, args);
     consoleErr(message.ptr, message.len);
 }
 
-pub fn fmtLog(allocator: Allocator, comptime fmt: []const u8, args: anytype) !void {
-    const str = try std.fmt.allocPrint(allocator, fmt, args);
-    defer allocator.free(str);
-    log(str);
+fn formatMessage(comptime fmt: []const u8, args: anytype) []u8 {
+    return std.fmt.allocPrint(std.heap.wasm_allocator, fmt, args) catch @panic("out of memory");
 }
