@@ -1,5 +1,4 @@
 const std = @import("std");
-const Allocator = std.mem.Allocator;
 
 extern fn consoleLog(message: [*]const u8, length: usize) void;
 extern fn consoleErr(message: [*]const u8, length: usize) void;
