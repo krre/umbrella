@@ -11,6 +11,7 @@ const Application = @This();
 allocator: Allocator,
 renderer: Renderer,
 root_widget: *Widget,
+size: Size2D = .{ .width = 0, .height = 0 },
 
 pub fn init(allocator: Allocator, root_widget: *Widget) Application {
     return Application{ .allocator = allocator, .renderer = Renderer.init(), .root_widget = root_widget };
@@ -25,7 +26,7 @@ pub fn render(self: *Application) void {
 }
 
 pub fn resize(self: *Application, size: Size2D) void {
-    _ = size;
+    self.size = size;
     self.render();
 }
 
