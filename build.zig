@@ -40,5 +40,12 @@ pub fn build(b: *std.Build) void {
         "keyUp",
     };
 
+    const angie3d = b.dependency("angie3d", .{
+        .target = target,
+        .optimize = optimize,
+    });
+
+    exe.root_module.addImport("angie3d", angie3d.module("angie3d"));
+
     b.installArtifact(exe);
 }
