@@ -48,13 +48,15 @@ pub fn build(b: *std.Build) void {
 
     b.getInstallStep().dependOn(&install_wasm.step);
 
-    const angie3d = b.dependency("angie3d", .{
+    const angie3d = "angie3d";
+
+    const angie3d_dep = b.dependency(angie3d, .{
         .target = target,
         .optimize = optimize,
     });
 
     const install_web = b.addInstallDirectory(.{
-        .source_dir = angie3d.path("src/web"),
+        .source_dir = angie3d_dep.path("src/web"),
         .install_dir = .prefix,
         .install_subdir = web_dir,
     });
@@ -69,5 +71,5 @@ pub fn build(b: *std.Build) void {
 
     b.getInstallStep().dependOn(&install_icons.step);
 
-    exe.root_module.addImport("angie3d", angie3d.module("angie3d"));
+    exe.root_module.addImport(angie3d, angie3d_dep.module(angie3d));
 }
