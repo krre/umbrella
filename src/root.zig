@@ -1,7 +1,6 @@
 const std = @import("std");
 const console = @import("console.zig");
 const js = @import("js.zig");
-const Application = @import("ui/Application.zig");
 const Umbrella = @import("ide/Umbrella.zig");
 
 export fn start() void {
