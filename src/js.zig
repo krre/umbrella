@@ -45,6 +45,8 @@ pub extern fn destroy(id: Id) void;
 pub extern fn remove(id: Id) void;
 
 // Window
+pub extern fn setTitle(title: [*]const u8, length: usize) void;
+
 pub extern fn windowWidth() u16;
 pub extern fn windowHeight() u16;
 

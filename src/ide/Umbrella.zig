@@ -11,4 +11,5 @@ var root: Box = undefined;
 pub fn init(allocator: Allocator) void {
     root = Box.init(allocator);
     app = Application.init(allocator, &root.widget);
+    Application.setTitle("Umbrella");
 }

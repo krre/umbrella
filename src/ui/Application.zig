@@ -1,6 +1,7 @@
 const std = @import("std");
 const Allocator = std.mem.Allocator;
 const Renderer = @import("../gfx/Renderer.zig");
+const js = @import("../js.zig");
 const Widget = @import("widget/Widget.zig");
 const geometry = @import("geometry.zig");
 const Pos2D = geometry.Pos2D;
@@ -19,6 +20,10 @@ pub fn init(allocator: Allocator, root_widget: *Widget) Application {
 
 pub fn start(self: *Application) !void {
     self.render();
+}
+
+pub fn setTitle(title: []const u8) void {
+    js.setTitle(title.ptr, title.len);
 }
 
 pub fn render(self: *Application) void {
