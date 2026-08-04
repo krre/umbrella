@@ -26,7 +26,6 @@ pub fn build(b: *std.Build) void {
     });
 
     exe.entry = .disabled;
-    exe.out_filename = "../../web/lib.wasm";
     exe.root_module.export_symbol_names = &[_][]const u8{
         "start",
         "resize",
@@ -40,12 +39,35 @@ pub fn build(b: *std.Build) void {
         "keyUp",
     };
 
+    const web_dir = "web";
+
+    const install_wasm = b.addInstallArtifact(exe, .{
+        .dest_dir = .{ .override = .{ .custom = web_dir } },
+        .dest_sub_path = "lib.wasm",
+    });
+
+    b.getInstallStep().dependOn(&install_wasm.step);
+
     const angie3d = b.dependency("angie3d", .{
         .target = target,
         .optimize = optimize,
     });
 
-    exe.root_module.addImport("angie3d", angie3d.module("angie3d"));
+    const install_web = b.addInstallDirectory(.{
+        .source_dir = angie3d.path("src/web"),
+        .install_dir = .prefix,
+        .install_subdir = web_dir,
+    });
 
-    b.installArtifact(exe);
+    b.getInstallStep().dependOn(&install_web.step);
+
+    const install_icons = b.addInstallDirectory(.{
+        .source_dir = b.path("src/web/icon"),
+        .install_dir = .prefix,
+        .install_subdir = web_dir,
+    });
+
+    b.getInstallStep().dependOn(&install_icons.step);
+
+    exe.root_module.addImport("angie3d", angie3d.module("angie3d"));
 }
