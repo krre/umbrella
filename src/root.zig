@@ -1,5 +1,6 @@
 const std = @import("std");
-const console = @import("console.zig");
+const angie3d = @import("angie3d");
+const console = angie3d.console;
 const js = @import("js.zig");
 const Umbrella = @import("ide/Umbrella.zig");
 
