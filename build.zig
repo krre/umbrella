@@ -56,7 +56,7 @@ pub fn build(b: *std.Build) void {
     });
 
     const install_web = b.addInstallDirectory(.{
-        .source_dir = angie3d_dep.path("src/web"),
+        .source_dir = angie3d_dep.path("web"),
         .install_dir = .prefix,
         .install_subdir = web_dir,
     });
