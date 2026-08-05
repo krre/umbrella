@@ -64,7 +64,7 @@ pub fn build(b: *std.Build) void {
     b.getInstallStep().dependOn(&install_web.step);
 
     const install_icons = b.addInstallDirectory(.{
-        .source_dir = b.path("src/web/icon"),
+        .source_dir = b.path("web"),
         .install_dir = .prefix,
         .install_subdir = web_dir,
     });
