@@ -1,6 +1,6 @@
 const Color = @import("../../ui/Color.zig");
 const js = @import("../../js.zig");
-const Id = @import("../../types.zig").Id;
+const Id = @import("angie3d").types.Id;
 
 const GpuColor = @This();
 

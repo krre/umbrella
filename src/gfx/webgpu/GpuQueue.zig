@@ -1,7 +1,7 @@
 const webgpu = @import("../webgpu.zig");
 const GpuCommandBuffer = webgpu.GpuCommandBuffer;
-const Id = webgpu.Id;
 const js = @import("../../js.zig");
+const Id = @import("angie3d").types.Id;
 
 const GpuQueue = @This();
 

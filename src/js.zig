@@ -1,5 +1,6 @@
 const Application = @import("ui/Application.zig");
-const Id = @import("types.zig").Id;
+const angie3d = @import("angie3d");
+const Id = angie3d.Id;
 
 pub var app: *Application = undefined;
 

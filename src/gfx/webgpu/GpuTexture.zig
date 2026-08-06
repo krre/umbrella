@@ -1,7 +1,7 @@
 const webgpu = @import("../webgpu.zig");
-const Id = webgpu.Id;
 const GpuTextureView = webgpu.GpuTextureView;
 const js = @import("../../js.zig");
+const Id = @import("angie3d").types.Id;
 
 const GpuTexture = @This();
 

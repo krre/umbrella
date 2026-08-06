@@ -11,7 +11,6 @@ pub const GpuRenderPassEncoder = @import("webgpu/GpuRenderPassEncoder.zig");
 pub const GpuRenderPassDescriptor = @import("webgpu/GpuRenderPassDescriptor.zig");
 pub const GpuTexture = @import("webgpu/GpuTexture.zig");
 pub const GpuTextureView = @import("webgpu/GpuTextureView.zig");
-pub const Id = @import("../types.zig").Id;
 
 pub const GpuLoadOp = enum {
     load,
