@@ -3,9 +3,9 @@ const Allocator = std.mem.Allocator;
 const Renderer = @import("../gfx/Renderer.zig");
 const js = @import("../js.zig");
 const Widget = @import("widget/Widget.zig");
-const geometry = @import("geometry.zig");
-const Pos2D = geometry.Pos2D;
-const Size2D = geometry.Size2D;
+const angie3d = @import("angie3d");
+const Pos2D = angie3d.ui.Pos2D;
+const Size2D = angie3d.ui.Size2D;
 
 const Application = @This();
 

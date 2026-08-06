@@ -1,8 +1,9 @@
 const std = @import("std");
 const Node = @import("../node/Node.zig");
-const geometry = @import("../geometry.zig");
-const Pos3D = geometry.Pos3D;
-const Size3D = geometry.Size3D;
+
+const angie3d = @import("angie3d");
+const Pos3D = angie3d.ui.Pos3D;
+const Size3D = angie3d.ui.Size3D;
 
 const Widget = @This();
 
