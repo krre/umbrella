@@ -1,7 +1,7 @@
 const std = @import("std");
 const Widget = @import("Widget.zig");
 const Border = @import("Border.zig");
-const Color = @import("../Color.zig");
+const Color = @import("angie3d").ui.Color;
 
 const Box = @This();
 

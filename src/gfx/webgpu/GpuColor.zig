@@ -1,4 +1,4 @@
-const Color = @import("../../ui/Color.zig");
+const Color = @import("angie3d").ui.Color;
 const js = @import("../../js.zig");
 const Id = @import("angie3d").types.Id;
 
