@@ -2,8 +2,9 @@ const std = @import("std");
 const Allocator = std.mem.Allocator;
 const Renderer = @import("../gfx/Renderer.zig");
 const js = @import("../js.zig");
-const Widget = @import("widget/Widget.zig");
+
 const angie3d = @import("angie3d");
+const Widget = angie3d.ui.widget.Widget;
 const Pos2D = angie3d.ui.Pos2D;
 const Size2D = angie3d.ui.Size2D;
 

@@ -10,8 +10,9 @@ const GpuCanvasContext = webgpu.GpuCanvasContext;
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
 
-const Widget = @import("../ui/widget/Widget.zig");
-const Color = @import("angie3d").ui.Color;
+const angie3d = @import("angie3d");
+const Widget = angie3d.ui.widget.Widget;
+const Color = angie3d.ui.Color;
 
 pub const Renderer = @This();
 
