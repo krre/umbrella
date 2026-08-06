@@ -1,9 +1,8 @@
 const std = @import("std");
-const Node = @import("../node/Node.zig");
-
 const angie3d = @import("angie3d");
 const Pos3D = angie3d.ui.Pos3D;
 const Size3D = angie3d.ui.Size3D;
+const Node = angie3d.ui.node.Node;
 
 const Widget = @This();
 
