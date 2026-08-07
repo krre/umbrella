@@ -1,7 +1,8 @@
 const std = @import("std");
 const Allocator = std.mem.Allocator;
-const Box = @import("angie3d").ui.widget.Box;
-const Application = @import("../ui/Application.zig");
+const angie3d = @import("angie3d");
+const Box = angie3d.ui.widget.Box;
+const Application = angie3d.ui.Application;
 
 const Umbrella = @This();
 
