@@ -1,4 +1,6 @@
-const webgpu = @import("webgpu.zig");
+const angie3d = @import("angie3d");
+
+const webgpu = angie3d.gfx.webgpu;
 const Gpu = webgpu.Gpu;
 const GpuAdapter = webgpu.GpuAdapter;
 const GpuColor = webgpu.GpuColor;
@@ -10,7 +12,6 @@ const GpuCanvasContext = webgpu.GpuCanvasContext;
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
 
-const angie3d = @import("angie3d");
 const Widget = angie3d.ui.widget.Widget;
 const Color = angie3d.ui.Color;
 
