@@ -4,7 +4,7 @@
     .fingerprint = 0x131530562f5bff9c,
     .minimum_zig_version = "0.16.0",
     .dependencies = .{
-        .angie3d = .{ .path = "../../angie3d" },
+        .angie3d = .{ .path = "../angie3d" },
     },
     .paths = .{
         "build.zig",
