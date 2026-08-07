@@ -5,14 +5,10 @@ const js = @import("js.zig");
 const Umbrella = @import("ide/Umbrella.zig");
 
 export fn start() void {
-    console.log("Application initing", .{});
+    console.log("Application starting", .{});
 
     Umbrella.init(std.heap.wasm_allocator);
-    js.app = &Umbrella.app;
+    js.event_handler = Umbrella.app.eventHandler();
 
-    if (js.app.start()) |_| {
-        console.log("Application started", .{});
-    } else |_| {
-        console.err("Application start failure", .{});
-    }
+    console.log("Application started", .{});
 }
