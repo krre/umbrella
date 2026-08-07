@@ -18,18 +18,6 @@ pub fn build(b: *std.Build) void {
     });
 
     exe.entry = .disabled;
-    exe.root_module.export_symbol_names = &[_][]const u8{
-        "start",
-        "resize",
-        "mouseMove",
-        "mouseClick",
-        "mouseDoubleClick",
-        "mouseDown",
-        "mouseUp",
-        "mouseWheel",
-        "keyDown",
-        "keyUp",
-    };
 
     const web_dir = "web";
 
@@ -46,6 +34,9 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+
+    const angie_mod = angie3d_dep.module(angie3d);
+    exe.root_module.export_symbol_names = angie_mod.export_symbol_names;
 
     const install_angie3d_web = b.addInstallDirectory(.{
         .source_dir = angie3d_dep.path("web"),

@@ -2,8 +2,9 @@ const webgpu = @import("../webgpu.zig");
 const GpuRenderPassEncoder = webgpu.GpuRenderPassEncoder;
 const GpuRenderPassDescriptor = webgpu.GpuRenderPassDescriptor;
 const GpuCommandBuffer = webgpu.GpuCommandBuffer;
-const js = @import("../../js.zig");
-const Id = @import("angie3d").types.Id;
+const angie3d = @import("angie3d");
+const js = angie3d.js;
+const Id = angie3d.types.Id;
 
 const GpuCommandEncoder = @This();
 

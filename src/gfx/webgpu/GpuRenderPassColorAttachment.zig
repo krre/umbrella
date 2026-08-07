@@ -3,8 +3,9 @@ const GpuColor = webgpu.GpuColor;
 const GpuLoadOp = webgpu.GpuLoadOp;
 const GpuStoreOp = webgpu.GpuStoreOp;
 const GpuTextureView = webgpu.GpuTextureView;
-const js = @import("../../js.zig");
-const Id = @import("angie3d").types.Id;
+const angie3d = @import("angie3d");
+const js = angie3d.js;
+const Id = angie3d.types.Id;
 
 const GpuRenderPassColorAttachment = @This();
 
