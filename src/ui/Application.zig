@@ -1,6 +1,5 @@
 const std = @import("std");
 const Allocator = std.mem.Allocator;
-const Renderer = @import("../gfx/Renderer.zig");
 
 const angie3d = @import("angie3d");
 const js = angie3d.js;
@@ -8,6 +7,7 @@ const Widget = angie3d.ui.widget.Widget;
 const Pos2D = angie3d.ui.Pos2D;
 const Size2D = angie3d.ui.Size2D;
 const EventHandler = angie3d.ui.EventHandler;
+const Renderer = angie3d.gfx.Renderer;
 
 const Application = @This();
 
