@@ -1,5 +1,5 @@
-const EventHandler = @import("ui/EventHandler.zig");
 const angie3d = @import("angie3d");
+const EventHandler = angie3d.ui.EventHandler;
 const Id = angie3d.types.Id;
 
 pub var event_handler: *EventHandler = undefined;
