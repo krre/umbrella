@@ -2,7 +2,7 @@ const std = @import("std");
 const angie3d = @import("angie3d");
 const console = angie3d.console;
 const js = angie3d.js;
-const Umbrella = @import("ide/Umbrella.zig");
+const Umbrella = @import("Umbrella.zig");
 
 export fn start() void {
     console.log("Application starting", .{});
