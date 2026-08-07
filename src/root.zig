@@ -9,6 +9,7 @@ export fn start() void {
 
     Umbrella.init(std.heap.wasm_allocator);
     js.event_handler = Umbrella.app.eventHandler();
+    Umbrella.app.render();
 
     console.log("Application started", .{});
 }
