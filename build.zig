@@ -22,7 +22,11 @@ pub fn build(b: *std.Build) void {
     const web_dir = "web";
 
     const install_wasm = b.addInstallArtifact(exe, .{
-        .dest_dir = .{ .override = .{ .custom = web_dir } },
+        .dest_dir = .{
+            .override = .{
+                .custom = web_dir,
+            },
+        },
         .dest_sub_path = "lib.wasm",
     });
 
